@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://fikhkdj3in"]
+
+[ext_resource type="Script" path="res://addons/htn_editor/CompoundEditor.gd" id="1_6h2wy"]
+
+[node name="CompoundEditor" type="VBoxContainer" node_paths=PackedStringArray("TaskName", "methods", "arg_names")]
+offset_right = 202.0
+offset_bottom = 35.0
+script = ExtResource("1_6h2wy")
+TaskName = NodePath("HBoxContainer/TaskName")
+methods = NodePath("MarginContainer/VBoxContainer/Methods")
+arg_names = NodePath("HBoxContainer/ArgNames")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TaskName" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+placeholder_text = "task_name"
+expand_to_text_length = true
+
+[node name="ArgNames" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="AddArg" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "+ "
+
+[node name="DelArg" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " - "
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Methods" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AddMethod" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "add method"
+
+[connection signal="text_changed" from="HBoxContainer/TaskName" to="." method="_on_task_name_changed"]
+[connection signal="pressed" from="HBoxContainer/AddArg" to="." method="_on_add_arg_pressed"]
+[connection signal="pressed" from="HBoxContainer/DelArg" to="." method="_on_del_arg_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/AddMethod" to="." method="_on_method_added"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnm6grdsx7ysi"]
+
+[ext_resource type="Script" path="res://addons/htn_editor/HTNEditor.gd" id="1_u737q"]
+[ext_resource type="Script" path="res://addons/htn_editor/ToolCodeEdit.gd" id="2_7ob1v"]
+
+[node name="HTNEditor" type="Panel"]
+custom_minimum_size = Vector2(1080, 620.595)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_u737q")
+
+[node name="CodeEdit" type="CodeEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+caret_blink = true
+symbol_lookup_on_click = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+script = ExtResource("2_7ob1v")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1005.0
+offset_top = 588.0
+offset_right = 1077.0
+offset_bottom = 619.0
+text = "Compile
+"
+
+[connection signal="text_changed" from="CodeEdit" to="." method="on_code_edit_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

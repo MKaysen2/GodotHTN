@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cphx3whc7k1ex"]
+
+[ext_resource type="Script" path="res://addons/htn_editor/MethodStepLayout.gd" id="1_u7p5f"]
+
+[node name="MethodStep" type="HBoxContainer"]
+size_flags_horizontal = 2
+size_flags_vertical = 0
+script = ExtResource("1_u7p5f")
+
+[node name="MoveUp" type="Button" parent="."]
+layout_mode = 2
+text = "^"
+
+[node name="MoveDown" type="Button" parent="."]
+layout_mode = 2
+text = "v"
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+tooltip_text = "Delete Task"
+text = " - "
+
+[node name="TaskName" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+placeholder_text = "task_name"
+expand_to_text_length = true
+
+[node name="Args" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="AddArg" type="Button" parent="."]
+layout_mode = 2
+text = "+"
+
+[node name="DelArg" type="Button" parent="."]
+layout_mode = 2
+text = "-"
+
+[connection signal="pressed" from="MoveUp" to="." method="on_move_up"]
+[connection signal="pressed" from="MoveDown" to="." method="on_move_down"]
+[connection signal="pressed" from="Delete" to="." method="on_delete"]
+[connection signal="text_changed" from="TaskName" to="." method="on_task_name_changed"]
+[connection signal="pressed" from="AddArg" to="." method="on_add_arg"]
+[connection signal="pressed" from="DelArg" to="." method="on_remove_arg"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx11awxlgo0t"]
+
+[ext_resource type="Script" path="res://addons/htn_editor/MethodLayout.gd" id="1_o7vvh"]
+
+[node name="MethodLayout" type="VSplitContainer" node_paths=PackedStringArray("tasks")]
+offset_right = 149.0
+offset_bottom = 107.0
+script = ExtResource("1_o7vvh")
+tasks = NodePath("MarginContainer/Control/Tasks")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Precondition" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "precondition"
+expand_to_text_length = true
+
+[node name="MoveUp" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "^"
+
+[node name="MoveDown" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "v"
+
+[node name="Delete" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "!!"
+
+[node name="MethodName" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "method_name"
+expand_to_text_length = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+
+[node name="Control" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Tasks" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="AddTask" type="Button" parent="MarginContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = " + "
+
+[connection signal="text_changed" from="HBoxContainer/Precondition" to="." method="_on_precondition_changed"]
+[connection signal="pressed" from="HBoxContainer/MoveUp" to="." method="_on_move_up"]
+[connection signal="pressed" from="HBoxContainer/MoveDown" to="." method="_on_move_down"]
+[connection signal="pressed" from="HBoxContainer/Delete" to="." method="_on_delete"]
+[connection signal="text_changed" from="HBoxContainer/MethodName" to="." method="_on_name_changed"]
+[connection signal="pressed" from="MarginContainer/Control/AddTask" to="." method="_on_add_task"]
